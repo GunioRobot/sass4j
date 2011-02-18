@@ -28,5 +28,11 @@ engines every time.
 The next step is to use the API and create a maven plugin for build time compilation and a
 servlet filter to serve up the stylesheets at runtime if you desire.
 
+### Git Submodule for Sass source
+For now I have just copied and hacked the latest source from Sass to get it to work here.
+I'm hoping to set up some kind of git submodule setup to make it easier to integrate source
+changes in Sass.  There are quite a few hacks to get it to work anyway, but hopefully
+there is a better way to make this work and I think JRuby 1.6.0 will fix a lot of the issues.
+
 [Sass]: http://sass-lang.com
 [JRuby]: http://jruby.org
