@@ -4,14 +4,8 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.organicelement</groupId>
-  <artifactId>sass4j</artifactId>
+  <artifactId>sass4j-project</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <description>Sass Wrapper for Java</description>
   <packaging>pom</packaging>
-
-  <modules>
-    <module>project</module>
-    <module>core</module>
-    <module>maven-plugin</module>
-  </modules>
+  <description>Sass Wrapper for Java</description>
 </project>
