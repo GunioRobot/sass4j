@@ -1,5 +1,6 @@
 package com.organicelement.sass4j.maven;
 
+import com.organicelement.sass4j.SassJava;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -125,10 +126,8 @@ public class Sass4jMojo
         this.logger = getLog();
         if (sourceDirectory != null && targetDirectory != null) {
             getLog().info( sourceDirectory + targetDirectory );
-            com.organicelement.sass4j.SassJava.main(
-                new String[]{"--update", sourceDirectory.toString() + ":" + targetDirectory.toString()} );
+            SassJava.main(new String[]{"--update", "--no-cache", sourceDirectory.toString() + ":" + targetDirectory.toString()} );
         }
-
         // Do the stuff here
     }
 

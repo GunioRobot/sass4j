@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.organicelement</groupId>
-    <artifactId>sass4j-project</artifactId>
+    <artifactId>sass4j</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../project/pom.xml</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.organicelement</groupId>
   <artifactId>maven-sass4j-plugin</artifactId>

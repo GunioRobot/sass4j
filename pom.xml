@@ -10,8 +10,19 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>project</module>
     <module>core</module>
     <module>maven-plugin</module>
   </modules>
+  <distributionManagement>
+    <repository>
+      <id>organicelement.releases</id>
+      <url>http://labs.organicelement.com/nexus/content/repositories/organicelement.releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>organicelement.snapshots</id>
+      <name>Organic Element Snapshots</name>
+      <url>http://labs.organicelement.com/nexus/content/repositories/organicelement.snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
