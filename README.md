@@ -19,7 +19,7 @@ even the interactive shell.
 ### Maven Plugin
 I have added a really hacked up maven plugin just to get started.  Embedding JRuby 
 in a Maven plugin certainly adds some overhead but it works for now. This plugin
-basically wraps the sass --update \<from\>:\<to\> command.  More options and features
+basically wraps the `sass --update \<from\>:\<to\>` command.  More options and features
 to follow.
 
 
