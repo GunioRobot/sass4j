@@ -16,6 +16,13 @@ Right now you can use all of the command line options that sass accepts on the
 command line.  This includes watching directories, updating, converting, and
 even the interactive shell.
 
+### Maven Plugin
+I have added a really hacked up maven plugin just to get started.  Embedding JRuby 
+in a Maven plugin certainly adds some overhead but it works for now. This plugin
+basically wraps the sass --update <from>:<to> command.  More options and features
+to follow.
+
+
 ## TODO
 ### Full featured Java API
 Right now I have only wrapped the command line options so that you can invoke
@@ -23,10 +30,6 @@ the commands just as you would with Ruby.  In order to get this to work as a Mav
 plugin and a servlet filter, I will try to add some API sugar so that it can be
 invoked from any JVM language without all of the overhead of creating new script
 engines every time.
-
-### Maven Plugin
-The next step is to use the API and create a maven plugin for build time compilation and a
-servlet filter to serve up the stylesheets at runtime if you desire.
 
 ### Git Submodule for Sass source
 For now I have just copied and hacked the latest source from Sass to get it to work here.
