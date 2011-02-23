@@ -1,2 +1,0 @@
-class Fail
-  blaput 'hello'
