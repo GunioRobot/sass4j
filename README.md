@@ -22,6 +22,9 @@ in a Maven plugin certainly adds some overhead but it works for now. This plugin
 basically wraps the `sass --update <from>:<to>` command.  More options and features
 to follow.
 
+WARNING: Running this plugin in the same maven invocation as jetty:run
+will cause issues with the container.  Working on a fix.
+
 
 ## TODO
 ### Full featured Java API
