@@ -10,7 +10,9 @@ import org.codehaus.plexus.compiler.util.scan.StaleSourceScanner;
 import org.codehaus.plexus.compiler.util.scan.mapping.SuffixMapping;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -29,11 +31,18 @@ public class Sass4jMojo
     private String sourceDirectory;
 
     /**
-     * the source directory to convert.
+     * the target directory for generated css files.
      *
      * @parameter default-value="${targetDirectory}"
      */
     private String targetDirectory;
+
+    /**
+     * load paths for imported or included sass files.
+     *
+     * @parameter default-value="${sourceDirectory}"
+     */
+    private String[] loadPaths;
 
     /**
      * reference to maven project for internal use.
@@ -45,9 +54,17 @@ public class Sass4jMojo
     protected MavenProject project;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
+        if (loadPaths.length == 0) {
+            loadPaths = new String[] {this.sourceDirectory};
+        }
 
-        StaleSourceScanner scanner = new StaleSourceScanner( 0, Collections.singleton( "**/*.scss" ), Collections.EMPTY_SET );
+        Set<String> includes = new HashSet<String>( 2 );
+        includes.add( "**/*.scss" );
+        includes.add( "**/*.sass" );
+
+        StaleSourceScanner scanner = new StaleSourceScanner( 0, includes, Collections.EMPTY_SET );
         scanner.addSourceMapping( new SuffixMapping( ".scss", ".css" ) );
+        scanner.addSourceMapping( new SuffixMapping( ".sass", ".css" ) );
 
         Set<File> staleFiles = Collections.emptySet();
         try
@@ -66,9 +83,11 @@ public class Sass4jMojo
                 target.mkdirs();
             }
             for (File file : staleFiles) {
-                getLog().info( "Compiling " + file.getName() + " to " + targetDirectory.toString() );
-                sassy.compile_file(file.toURI().toString(), targetDirectory + File.separator + file.getName().substring(0, file.getName().lastIndexOf('.')) + ".css");
-
+                // Ignore partials
+                if (!file.getName().startsWith( "_", 0 )) {
+                    getLog().info( "Compiling " + file.getName() + " to " + targetDirectory.toString() ) ;
+                    sassy.compile_file(file.toURI().toString(), targetDirectory + File.separator + file.getName().substring(0, file.getName().lastIndexOf('.')) + ".css", loadPaths);
+                }
             }
             getLog().info( "Finished processing Sass files" );
         } else {
