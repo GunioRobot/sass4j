@@ -19,7 +19,7 @@ class Sass::Tree::Visitors::CheckNesting < Sass::Tree::Visitors::Base
 
   def visit_children(parent)
     old_parent = @parent
-    @parent = parent unless is_any_of?(parent, 
+    @parent = parent unless is_any_of?(parent,
       Sass::Tree::EachNode, Sass::Tree::ForNode, Sass::Tree::IfNode,
       Sass::Tree::ImportNode, Sass::Tree::MixinNode, Sass::Tree::WhileNode)
     old_real_parent, @real_parent = @real_parent, parent
@@ -85,7 +85,7 @@ class Sass::Tree::Visitors::CheckNesting < Sass::Tree::Visitors::Base
   end
 
   def invalid_import_real_parent?(parent, child)
-    
+
   end
 
   def invalid_mixindef_parent?(parent, child)

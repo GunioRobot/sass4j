@@ -25,7 +25,7 @@ public class Sass4jMojo
 
     /**
      * the source directory to convert.
-     * 
+     *
      * @parameter default-value="${sourceDirectory}"
      */
     private String sourceDirectory;
